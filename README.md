@@ -24,7 +24,7 @@ A complete example would be:
 
     python ipy2wp.py --xmprpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython
 
-The result will be a draft on your wordpress site.
+The result will be a draft on your wordpress site. Please, check the draft before you publish the post as some advanced functionality could not be solved satisfactorily. If you find something wrong, please, open an issue.
 
 License
 =======
