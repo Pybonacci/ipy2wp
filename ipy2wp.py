@@ -3,26 +3,6 @@
 ## Based on the script originally published on
 ## http://www.jansipke.nl/using-python-to-add-new-posts-in-wordpress/
 
-#############################################################################
-## User modifications defining the site where the ipynb should be published
-#wp_url = "http://pybowp.runbear.webfactional.com/xmlrpc.php"
-#wp_username = "admin"
-#wp_password = "E7LnoYRW"
-#notebook = 'testing.ipynb'
-## post title
-#title = 'Testing'
-#wp_blogid = ""
-#post_language = "ES" ## "EN" for english and "ES" for spanish
-## The category should exist in your wordpress
-#categories = ["Recursos", "Básico", "Tutoriales"] 
-## Tags for the post
-#tags = [ "numpy", "numpy.recarray", "recarray","ipynb2wp", 'record array',
-#         'recarray']
-## Boolean value, 0 == not published (draft) and 1 == published
-#status_published = 0
-## That's all
-#############################################################################
-
 import datetime
 import argparse
 try:
