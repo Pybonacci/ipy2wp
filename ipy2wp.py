@@ -28,6 +28,8 @@ parser.add_argument('--categories', nargs='+',
                     help="A list of categories separated by space")
 parser.add_argument('--tags', nargs='+', 
                     help="A list of tags separated by space")
+parser.add_argument('--to', 
+                    help="Convert to html or markdown")
 args = parser.parse_args()
 
 err_msg = "You should provide a value for the option --{}"
@@ -47,8 +49,20 @@ if args.password:
 else:
     raise Exception(err_msg.format('password'))
     
+if args.to and args.to in ['html','markdown']:
+    convert_to = args.to
+elif not args.to:
+	convert_to = 'html'
+else:
+    raise Exception(err_msg.format(
+        "to, only 'html' or 'markdown' options are allowed"))
+
 if args.nb:
-    post = nbc.export_html(nb = args.nb, template_file="basic")[0]
+	if convert_to == 'html':
+		post = nbc.export_html(nb = args.nb, template_file="basic")[0]
+	if convert_to == 'markdown':
+		post = nbc.export_markdown(nb = args.nb, 
+		                           template_file="basic")[0]
 else:
     raise Exception(err_msg.format('nb'))
 
