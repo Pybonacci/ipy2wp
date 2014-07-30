@@ -5,6 +5,8 @@
 
 import datetime
 import argparse
+from binascii import a2b_base64
+import re
 try:
     import xmlrpc.client as xmlrpclib #python3
 except:
@@ -28,8 +30,6 @@ parser.add_argument('--categories', nargs='+',
                     help="A list of categories separated by space")
 parser.add_argument('--tags', nargs='+', 
                     help="A list of tags separated by space")
-parser.add_argument('--to', 
-                    help="Convert to html or markdown")
 args = parser.parse_args()
 
 err_msg = "You should provide a value for the option --{}"
@@ -49,20 +49,8 @@ if args.password:
 else:
     raise Exception(err_msg.format('password'))
     
-if args.to and args.to in ['html','markdown']:
-    convert_to = args.to
-elif not args.to:
-	convert_to = 'html'
-else:
-    raise Exception(err_msg.format(
-        "to, only 'html' or 'markdown' options are allowed"))
-
 if args.nb:
-	if convert_to == 'html':
-		post = nbc.export_html(nb = args.nb, template_file="basic")[0]
-	if convert_to == 'markdown':
-		post = nbc.export_markdown(nb = args.nb, 
-		                           template_file="basic")[0]
+    post = nbc.export_html(nb = args.nb, template_file="basic")[0]
 else:
     raise Exception(err_msg.format('nb'))
 
@@ -81,13 +69,34 @@ if args.tags:
 else:
     tags = ''
 
+# Let's extract the images and upload to wp
+pat = re.compile('src="data:image/(.*?);base64,(.*?)"',  re.DOTALL)
+count = 1
+postnew = post
+for (ext, data) in pat.findall(post):
+    datab = a2b_base64(data)
+    datab = xmlrpclib.Binary(datab)
+    imgtitle = title.replace(' ','_').replace('.','-')
+    out = {'name': imgtitle + str(count) + '.' + ext,
+           'type': 'image/' + ext,
+           'bits': datab,
+           'overwrite': 'true'}
+    count += 1
+    image_id = server.wp.uploadFile("", 
+                                    user, 
+                                    password, 
+                                    out)
+    urlimg = image_id['url']
+    postnew = postnew.replace('data:image/' + ext + ';base64,' + data, 
+                               urlimg)
+
 if __name__ == '__main__':
     ## Publishing the post
     date_created = xmlrpclib.DateTime(datetime.datetime.now())
     status_published = 0
     wp_blogid = ""
     data = {'title': title, 
-            'description': post,
+            'description': postnew,
             'post_type': 'post',
             'dateCreated': date_created,
             'mt_allow_comments': 'open',
