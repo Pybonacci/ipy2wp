@@ -24,6 +24,8 @@ A complete example would be:
 
     python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython
 
+If there are inline images in your notebook, them will be converted and uploaded yo your wordpress blog ('wp-content/uploads') and the html code will be changed to link to the uploaded images.
+
 The result will be a draft on your wordpress site. Please, check the draft before you publish the post as some advanced functionality could not be solved satisfactorily. If you find something wrong, please, open an issue.
 
 License
