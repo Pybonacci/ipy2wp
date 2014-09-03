@@ -17,19 +17,21 @@ import IPython.nbconvert as nbc
 #options
 parser = argparse.ArgumentParser(description='Publish ipynb to wp')
 parser.add_argument('--xmlrpc-url', 
-                    help="The XML-RPC server/path url")
+    help="The XML-RPC server/path url")
 parser.add_argument('--user', 
-                    help="The wordpress user")
+    help="The wordpress user")
 parser.add_argument('--password', 
-                    help="The wordpress user password")
+    help="The wordpress user password")
 parser.add_argument('--nb', 
-                    help="The path and notebook filename")
+    help="The path and notebook filename")
 parser.add_argument('--title', 
-                    help="The title for the post in the site")
+    help="The title for the post in the site")
 parser.add_argument('--categories', nargs='+', 
-                    help="A list of categories separated by space")
+    help="A list of categories separated by space")
 parser.add_argument('--tags', nargs='+', 
-                    help="A list of tags separated by space")
+    help="A list of tags separated by space")
+parser.add_argument('--template',
+    help="The template to be used, if none then basic is used")
 args = parser.parse_args()
 
 err_msg = "You should provide a value for the option --{}"
@@ -48,9 +50,14 @@ if args.password:
     password = args.password
 else:
     raise Exception(err_msg.format('password'))
-    
+
+if args.template:
+	tpl = args.template
+else:
+	tpl = "basic"
+	
 if args.nb:
-    post = nbc.export_html(nb = args.nb, template_file="basic")[0]
+    post = nbc.export_html(nb = args.nb, template_file = tpl)[0]
 else:
     raise Exception(err_msg.format('nb'))
 
