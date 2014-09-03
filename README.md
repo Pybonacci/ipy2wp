@@ -19,10 +19,11 @@ You have the following options:
 * --title: The title of the post
 * --categories: The categories for the post (the categories should be defined previously in the blog)
 * --tags: tags for the post
+* --template: The template to be used. If no template is provided then the basic IPython notebook html template is used
 
 A complete example would be:
 
-    python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython
+    python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython --template my_template
 
 If there are inline images in your notebook, them will be converted and uploaded yo your wordpress blog ('wp-content/uploads') and the html code will be changed to link to the uploaded images.
 
