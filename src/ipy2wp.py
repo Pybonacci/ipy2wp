@@ -76,9 +76,6 @@ if args.tags:
 else:
     tags = ''
 
-print(post)
-
-
 # Let's extract the images and upload to wp
 pat = re.compile('src="data:image/(.*?);base64,(.*?)"',  re.DOTALL)
 count = 1
