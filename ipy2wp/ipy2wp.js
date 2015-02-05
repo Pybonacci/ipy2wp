@@ -91,8 +91,6 @@ define(['base/js/namespace','jquery'], function(IPython, $) {
                       'pathpy = IPython.utils.path.get_ipython_dir() + \"/nbextensions/ipy2wp/ipy2wp.py\";' +
                       'pathtpl = IPython.utils.path.get_ipython_dir() + \"/nbextensions/ipy2wp/templates\";' +
                       'pathnb = os.getcwd() + \"/' + path + '\";' +
-                      'path, ipynb = os.path.split(pathnb);' +
-                      'shutil.copy(pathtpl, path);' +
                       'os.system(\'python {0} ' + 
                       '--xmlrpc {1} ' +
                       '--user {2} ' +
@@ -112,7 +110,7 @@ define(['base/js/namespace','jquery'], function(IPython, $) {
                         ', \"' + $.trim($(tags).val()) + '\"' +
                         ', \"' + $.trim($(template).val()) + '\"' +
                         '))';
-                  console.log(command)
+                  //console.log(command)
                   kernel.execute(command);
 		      }
           }
