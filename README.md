@@ -24,7 +24,7 @@ You have the following options:
 * --title: The title of the post
 * --categories: The categories for the post (the categories should be defined previously in the blog)
 * --tags: tags for the post
-* --template: The template to be used. If no template is provided then the basic IPython notebook html template is used. See the templates section for more info.
+* --template: The template to be used. If no template is provided then the basic IPython notebook html template is used. [See the templates section for more info](https://github.com/Pybonacci/ipy2wp#templates).
 
 A complete example would be:
 
@@ -35,7 +35,7 @@ A complete example would be:
 From the notebook
 -----------------
 
-You should load the nbextension (the js file) as explained in the users extensions repo.
+You should load the nbextension (the js file) as [explained in the users extensions repo](https://github.com/ipython-contrib/IPython-notebook-extensions/wiki#general-installation-instruction).
 
 Once is loaded you would see a new button in the toolbar with the wordpress logo:
 
