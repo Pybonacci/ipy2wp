@@ -39,7 +39,7 @@ Once is loaded you would see a new button in the toolbar with the wordpress logo
 
 ![image](https://raw.githubusercontent.com/Pybonacci/ipy2wp/master/images/wordpress_button.png)
 
-If the button in pressed the following dialog will appear:
+If the button is pressed the following dialog will appear:
 
 ![image](https://raw.githubusercontent.com/Pybonacci/ipy2wp/master/images/dialog.png)
 
