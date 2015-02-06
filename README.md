@@ -3,12 +3,17 @@ ipy2wp
 
 Publish an IPython notebook on a wordpress site using xmlrpc
 
-This tool is far from being perfect but it allows you to publish an IPython notebook on a worpress site using xmlrpc.
+This tool is far from being perfect but it allows you to publish an IPython notebook on a worpress site using xmlrpc from the command line or from the notebook itself.
 
 Usage
 =====
 
-    python ipy2wp.py [options]
+There are two ways to use this tool:
+
+From the command line
+---------------------
+
+    python /path/to/ipy2wp.py [options]
 
 You have the following options:
 
@@ -19,15 +24,44 @@ You have the following options:
 * --title: The title of the post
 * --categories: The categories for the post (the categories should be defined previously in the blog)
 * --tags: tags for the post
-* --template: The template to be used. If no template is provided then the basic IPython notebook html template is used
+* --template: The template to be used. If no template is provided then the basic IPython notebook html template is used. See the templates section for more info.
 
 A complete example would be:
 
-    python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython --template my_template
+    python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython --template basic
+
+From the notebook
+-----------------
+
+You should load the nbextension (the js file) as explained in the users extensions repo.
+
+Once is loaded you would see a new button in the toolbar with the wordpress logo:
+
+![image](https://raw.githubusercontent.com/Pybonacci/ipy2wp/master/images/wordpress_button.png)
+
+If the button in pressed the following dialog will appear:
+
+![image](https://raw.githubusercontent.com/Pybonacci/ipy2wp/master/images/dialog.png)
+
+Notebook inline images
+======================
 
 If there are inline images in your notebook, them will be converted and uploaded yo your wordpress blog ('wp-content/uploads') and the html code will be changed to link to the uploaded images.
 
+Result
+======
+
 The result will be a draft on your wordpress site. Please, check the draft before you publish the post as some advanced functionality could not be solved satisfactorily. If you find something wrong, please, open an issue.
+
+Templates
+=========
+
+Right now you can choose between the **basic** and the **basicx** templates. 
+
+* The **basic** template is that used by nbconvert.
+* The **basicx** template is similar to the **basic** template but it eliminates the input and output prompt numbers, most of the css classes and injects some css code to highlight the code cells as in the notebook.
+
+If you want to provide new templates just send a PR or open an issue describing your needs.
 
 License
 =======
