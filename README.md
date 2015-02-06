@@ -30,6 +30,8 @@ A complete example would be:
 
     python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython --template basic
 
+*It works on IPython/Jupiter 2.0+  and Python 2.7+ and 3.3+*
+
 From the notebook
 -----------------
 
@@ -42,6 +44,8 @@ Once is loaded you would see a new button in the toolbar with the wordpress logo
 If the button is pressed the following dialog will appear:
 
 ![image](https://raw.githubusercontent.com/Pybonacci/ipy2wp/master/images/dialog.png)
+
+*It works only on Jupyter and Linux :-(*
 
 Notebook inline images
 ======================
