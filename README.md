@@ -3,7 +3,7 @@ ipy2wp
 
 Publish an IPython notebook on a wordpress site using xmlrpc
 
-This tool is far from being perfect but it allows you to publish an IPython notebook on a worpress site using xmlrpc from the command line or from the notebook itself.
+This tool is far from being perfect but it allows you to publish an IPython notebook on a wordpress site using xmlrpc from the command line or from the notebook itself.
 
 Usage
 =====
