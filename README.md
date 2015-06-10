@@ -45,7 +45,7 @@ ip=IPython.get_ipython()
 ip.ipython_dir
 ```
 
-* Now you should have the following folder (in my case `ipython_dir = '/home/kiko/ipython/'`):
+* Now you should have the following folder (in my case `ipython_dir = '/home/kiko/.ipython/'`):
 
 `/home/kiko/.ipython/nbextensions/ipy2wp/`
 
@@ -59,7 +59,7 @@ ip.ipython_dir
     └── basicx.tpl
 ```
 
-To load the extension you can do the following in an IPython/Jupyter notebook:
+To load the extension you can do the following in an IPython/Jupyter notebook code cell:
 
 ```
 %%javascript
