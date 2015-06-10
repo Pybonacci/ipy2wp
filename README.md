@@ -35,7 +35,38 @@ A complete example would be:
 From the notebook
 -----------------
 
-You should load the nbextension (the js file) as [explained in the users extensions repo](https://github.com/ipython-contrib/IPython-notebook-extensions/wiki#general-installation-instruction).
+You should load the nbextension (the js file) in the following way:
+
+* Donload the repo and copy the `ipy2wp/` folder in your local `ipython_dir/nbextensions/` folder. To get your `ipython_dir` you could use the following code:
+
+```python
+import IPython
+ip=IPython.get_ipython()
+ip.ipython_dir
+```
+
+* Now you should have the following folder (in my case `ipython_dir = '/home/kiko/ipython/'`):
+
+`/home/kiko/.ipython/nbextensions/ipy2wp/`
+
+* In that folder you should have the following file structure:
+
+```
+ipy2wp/
+  |
+  |--ipy2wp.py
+  |--ipy2wp.js
+  |--templates/
+       |
+       |--basicx.tpl
+```
+
+To load the extension you can do the following in an IPython/Jupyter notebook:
+
+```
+%%javascript
+IPython.load_extensions('ipy2wp/ipy2wp')
+```
 
 Once is loaded you would see a new button in the toolbar with the wordpress logo:
 
