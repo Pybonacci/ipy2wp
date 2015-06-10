@@ -35,7 +35,7 @@ A complete example would be:
 From the notebook
 -----------------
 
-You should load the nbextension (the js file) in the following way:
+You should load the nbextension in the following way:
 
 * Donload the repo and copy the `ipy2wp/` folder in your local `ipython_dir/nbextensions/` folder. To get your `ipython_dir` you could use the following code:
 
@@ -52,13 +52,11 @@ ip.ipython_dir
 * In that folder you should have the following file structure:
 
 ```
-ipy2wp/
-  |
-  |--ipy2wp.py
-  |--ipy2wp.js
-  |--templates/
-       |
-       |--basicx.tpl
+.
+├── ipy2wp.js
+├── ipy2wp.py
+└── templates
+    └── basicx.tpl
 ```
 
 To load the extension you can do the following in an IPython/Jupyter notebook:
