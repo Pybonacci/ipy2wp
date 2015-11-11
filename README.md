@@ -1,9 +1,9 @@
 ipy2wp
 ======
 
-Publish an IPython notebook on a wordpress site using xmlrpc
+Publish a IPython/Jupyter notebook on a wordpress site using xmlrpc
 
-This tool is far from being perfect but it allows you to publish an IPython notebook on a wordpress site using xmlrpc from the command line or from the notebook itself.
+This tool is far from being perfect but it allows you to publish an IPython/Jupyter notebook on a wordpress site using xmlrpc from the command line or from the notebook itself.
 
 Usage
 =====
@@ -30,24 +30,23 @@ A complete example would be:
 
     python ipy2wp.py --xmlrpc-url http://pybonacci.org/xmlrpc.php --user kiko --password 1_2_oh_my_god!!! --nb 'dummy.ipynb' --title 'The best post ever' --categories articles tutorials --tags strawberry lucy ipython --template basic
 
-*It works on IPython/Jupiter 2.0+  and Python 2.7+ and 3.3+*
+*It works on IPython/Jupyter 4.0+  and Python 2.7+ and 3.3+*
 
 From the notebook
 -----------------
 
 You should load the nbextension in the following way:
 
-* Donload the repo and copy the `ipy2wp/` folder in your local `ipython_dir/nbextensions/` folder. To get your `ipython_dir` you could use the following code:
+* Donload the repo and copy the `ipy2wp/` folder in your local `jupyter_data_dir/nbextensions/` folder. To get your `jupyter_data_dir` you could use the following code:
 
 ```python
-import IPython
-ip=IPython.get_ipython()
-ip.ipython_dir
+from jupyter_core.paths import jupyter_data_dir
+jupyter_data_dir()
 ```
 
-* Now you should have the following folder (in my case `ipython_dir = '/home/kiko/.ipython/'`):
+* Now you should have the following folder (in my case `jupyter_data_dir = '/home/kiko/.local/share/jupyter'`):
 
-`/home/kiko/.ipython/nbextensions/ipy2wp/`
+`/home/kiko/.local/share/jupyter/nbextensions/ipy2wp/`
 
 * In that folder you should have the following file structure:
 
@@ -59,14 +58,36 @@ ip.ipython_dir
     └── basicx.tpl
 ```
 
+To check if the directory of the file exists:
+
+```
+import notebook
+notebook.nbextensions.check_nbextension('ipy2wp', user=True)
+notebook.nbextensions.check_nbextension('ipy2wp/ipy2wp.js', user=True)
+```
+
+Make sure to use `user=True` if you have the extensions installed in 
+your local path (in `jupyter_data_dir()`).
+
 To load the extension you can do the following in an IPython/Jupyter notebook code cell:
 
 ```
-%%javascript
-IPython.load_extensions('ipy2wp/ipy2wp')
+import notebook
+E = notebook.nbextensions.EnableNBExtensionApp()
+E.enable_nbextension('ipy2wp/ipy2wp')
 ```
 
-Once is loaded you would see a new button in the toolbar with the wordpress logo:
+And to disable the extension you can do the following in an IPython/Jupyter notebook code cell:
+
+```
+import notebook
+D = notebook.nbextensions.DisableNBExtensionApp()
+D.disable_nbextension('ipy2wp/ipy2wp')
+```
+
+
+Once is loaded you should refresh the front end and you would see a new 
+button in the toolbar with the wordpress logo:
 
 ![image](https://raw.githubusercontent.com/Pybonacci/ipy2wp/master/images/wordpress_button.png)
 
