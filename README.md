@@ -1,3 +1,5 @@
+## [DEVELOPMENT CONTINUES HERE: https://github.com/Pybonacci/jupy2wp] 
+
 ipy2wp
 ======
 
